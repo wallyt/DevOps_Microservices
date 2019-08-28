@@ -17,5 +17,7 @@ a="Waiting for pod "
 b="$a$POD"
 echo $b
 
+sleep 180
+
 # Forward the container port to a host
 sudo kubectl port-forward $POD 80:80
