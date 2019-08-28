@@ -2,17 +2,21 @@
 
 # This tags and uploads an image to Docker Hub
 
-# Step 1:
 # This is your Docker ID/path
-# dockerpath=<>
+dockerpath=wallyt/theapp
 
-# Step 2
 # Run the Docker Hub container with kubernetes
+kubectl run kubernetes-theapp --image=$dockerpath --port=80 --labels="app=theapp"
 
-
-# Step 3:
 # List kubernetes pods
+kubectl get pods
 
-# Step 4:
+POD=$(kubectl get pods -l app=theapp -o custom-columns=:metadata.name)
+
+a="Waiting for pod "
+b="$a$POD"
+echo $b
+sleep 600
+
 # Forward the container port to a host
-
+kubectl port-forward $POD 80:80
