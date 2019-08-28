@@ -9,6 +9,7 @@ dockerpath=wallyt/theapp
 # Authenticate & tag
 docker login --username=wallyt
 echo "Docker ID and Image: $dockerpath"
+docker tag theapp wallyt/theapp
 
 # Push image to a docker repository
 docker push $dockerpath
